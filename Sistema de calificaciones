@@ -1,0 +1,130 @@
+import java.util.Scanner; // Importando librería 'Scanner'
+
+public class Main {
+    public static void main (String[] args){
+        Scanner INPUT = new Scanner(System.in); // Ceando obj. tipo 'Scanner'
+
+        String studentName = "";
+        Double calUno = 0.0;
+        Double calDos = 0.0;
+        Double promedio = 0.0;
+        Double calAprobatoriaD = 0.0; // Si la var. 'calAprobatoriaD' fuese de tipo 'double' no podría convertirse en un dato entero, ya que, para ello debe ser una clase de tipo 'Double'
+        int calAprobatoria = 0;
+
+        System.out.print("Ingrese el nombre del alumno: ");
+        studentName = INPUT.nextLine();
+
+        // Cal. mín. aprobatoria 6 o 7.
+        System.out.print("Ingrese la calificación mínima aprobatoria (6 o 7): ");
+        calAprobatoriaD = INPUT.nextDouble();
+
+        while(calAprobatoriaD != 6.0 && calAprobatoriaD != 7.0) {
+            System.out.print("\n" + "Ingrese una calificación mínima aprobatoria válida: ");
+            calAprobatoriaD = INPUT.nextDouble();
+        }
+        // Convertir de 'double' a 'int'.
+        calAprobatoria = calAprobatoriaD.intValue();
+
+        /*
+        // Cal. aprobatoria sea entera.
+        if(calAprobatoriaD % 1 == 0) { // Is integer.
+            // Convertir  de 'double' a 'int'.
+            calAprobatoria = calAprobatoriaD.intValue();
+            ////
+        } else {
+            do {  // Is not integer
+                System.out.print("\n" + "Ingrese una calificación mínima aprobatoria válida: ");
+                calAprobatoriaD = INPUT.nextDouble();
+            } while(calAprobatoriaD % 1 != 0);
+
+            //
+            // Is integer.
+            // Convertir  de 'double' a 'int'.
+            calAprobatoria = calAprobatoriaD.intValue();
+            //
+        }
+
+        // Cal. aprobatoria sea 6 o 7.
+        while(calAprobatoria != 6 && calAprobatoria != 7) {
+            System.out.print("\n" + "Ingrese una calificación mínima aprobatoria válida: ");
+            calAprobatoria = INPUT.nextInt();
+        }
+        */
+
+        switch(calAprobatoria) {
+            case 6:
+                System.out.println("\n" + "Calificación mínima aprobatoria seleccionada: " + calAprobatoria);
+                break;
+
+            case 7:
+                System.out.println("\n" + "Calificación mínima aprobatoria seleccionada: " + calAprobatoria);
+                break;
+        }
+        
+        System.out.print("Ingrese la primera calificación: ");
+        calUno = INPUT.nextDouble();
+        // Validando que 'calUno' sea >= 0.
+        while(calUno < 0) {
+            System.out.println("\n" + "Debe ingresar una calificación mayor o igual a cero.");
+            System.out.print("Ingrese la primera calificación: ");
+            calUno = INPUT.nextDouble();
+        }
+
+        System.out.print("Ingrese la segunda calificación: ");
+        calDos = INPUT.nextDouble();
+        // Validando que calDos sea >= 0.
+        while(calDos < 0) {
+            System.out.println("\n" + "Debe ingresar una calificación mayor o igual a cero.");
+            System.out.print("Ingrese la segunda calificación: ");
+            calDos = INPUT.nextDouble();
+        }
+
+        promedio = (calUno + calDos) / 2;
+        if(promedio % 1 == 0) {
+            int promedioInt = promedio.intValue(); // Método para convertir de núm. decimal a núm. entero (eliminando los núms. después del punto decimal).
+            System.out.println("\n" + "Nombre del alumno: " + studentName);
+            System.out.println("Promedio de calificación: " + promedioInt);
+
+            // Cal. aprobatoria / cal. no aprobatoria.
+            switch(calAprobatoria) {
+                case 6:
+                    if(promedio >= 6) {
+                        System.out.println("Calificación aprobatoria.");
+                    } else {
+                        System.out.println("Calificación no aprobatoria.");
+                    }
+                    break;
+
+                case 7:
+                    if(promedio >= 7) {
+                        System.out.println("Calificación aprobatoria.");
+                    } else {
+                        System.out.println("Calificación no aprobatoria.");
+                    }
+                    break;
+            }
+        } else {
+            System.out.println("\n" + "Nombre del alumno: " + studentName);
+            System.out.println("Promedio de calificación: " + promedio);
+
+            // Cal. aprobatoria / cal. no aprobatoria.
+            switch(calAprobatoria) {
+                case 6:
+                    if(promedio >= 6) {
+                        System.out.println("Calificación aprobatoria.");
+                    } else {
+                        System.out.println("Calificación no aprobatoria.");
+                    }
+                    break;
+
+                case 7:
+                    if(promedio >= 7) {
+                        System.out.println("Calificación aprobatoria.");
+                    } else {
+                        System.out.println("Calificación no aprobatoria.");
+                    }
+                    break;
+            }
+        }
+    }
+}
